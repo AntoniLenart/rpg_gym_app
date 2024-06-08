@@ -6,7 +6,7 @@ from app.forms import LoginForm, RegistrationForm
 bp = Blueprint('routes', __name__)
 
 
-@bp.route('/')
+@bp.route('/index', methods=['GET'])
 def index():
     return render_template('index.html')
 
