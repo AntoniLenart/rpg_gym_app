@@ -1,15 +1,17 @@
 from datetime import datetime
-from app import db
+from .app import db
 
 
 class User(db.Model):
+    __tablename__ = 'users'
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     xp = db.Column(db.Integer, default=0)
     level = db.Column(db.Integer, default=1)
-    badges = db.relationship('Badge', backref='owner', lazy='dynamic')
+    # badges = db.relationship('Badge', backref='owner', lazy='dynamic')
 
 
 class Badge(db.Model):

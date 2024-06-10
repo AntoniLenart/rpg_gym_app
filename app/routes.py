@@ -2,7 +2,7 @@ import requests
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 
 import config
-from app import db
+from .app import db
 from app.models import User, WorkoutPlan, Exercise, Badge
 from app.forms import LoginForm, RegistrationForm
 

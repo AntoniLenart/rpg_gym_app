@@ -12,7 +12,7 @@ def create_app():
     app.debug = True
     app.config.from_pyfile('../config.py')
     app.config['SECRET_KEY'] = 'you-will-never-guess'
-    app.config['SQLALCHEMY_DATABASE_URI'] = config.Config.SQLALCHEMY_DATABASE_URI
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:admin@localhost/gym_rpg'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = config.Config.SQLALCHEMY_TRACK_MODIFICATIONS
 
     db.init_app(app)
