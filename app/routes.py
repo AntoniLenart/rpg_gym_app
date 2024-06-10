@@ -20,8 +20,11 @@ def index():
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegistrationForm()
+    if request.method == 'GET':
+        return render_template('register.html')
+
     if request.method == 'POST':
+        form = RegistrationForm()
         recaptcha_response = request.form.get('g-recaptcha-response')
         data = {
             'secret': CONFIG.RECAPTCHA_SECRET_KEY,
@@ -31,20 +34,17 @@ def register():
         result = r.json()
 
         if result['success']:
-            if form.validate_on_submit():
-                user = User(username=form.username.data, email=form.email.data)
-                user.set_password(form.password.data)
-
-                db.session.add(user)
-                db.session.commit()
-                flash('Registration successful!', 'success')
-                return redirect(url_for('routes.login'))
-            else:
-                flash('Form validation failed. Please check your inputs.', 'danger')
+            user = User(username=form.username.data, email=form.email.data, password_hash=form.password.data,
+                        xp=0, level=1)
+            db.session.add(user)
+            db.session.commit()
+            flash('Registration successful!', 'success')
+            return redirect(url_for('routes.login'))
         else:
-            flash('Invalid reCAPTCHA. Please try again.', 'danger')
+            flash('Form validation failed. Please check your inputs.', 'danger')
+    else:
+        flash('Invalid reCAPTCHA. Please try again.', 'danger')
         return redirect(url_for('routes.login'))
-    return render_template('register.html', form=form)
 
 
 @bp.route('/login', methods=['GET', 'POST'])
@@ -53,7 +53,9 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
+            print('Invalid username or password')
             return redirect(url_for('routes.login'))
+        print('Login successful')
         return redirect(url_for('routes.index'))
     return render_template('login.html', form=form)
 
