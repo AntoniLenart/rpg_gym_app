@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rejestracja</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -32,7 +33,7 @@
 <body>
     <div class="register-form">
         <h2>Rejestracja</h2>
-        <form method="post" action="{{ url_for('register') }}">
+        <form id="registerForm" method="POST" action="{{ url_for('routes.register') }}">
             <div class="form-group">
                 <label for="username">Nazwa użytkownika</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -49,8 +50,19 @@
                 <label for="confirm_password">Potwierdź hasło</label>
                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
             </div>
+            <div class="g-recaptcha" data-sitekey="6LckD6EfAAAAAKqk5lcYli_Get0k-ZzNQxADIA4q"></div>
+            <br/>
             <button type="submit" class="btn btn-primary btn-register">Zarejestruj się</button>
         </form>
     </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            var response = grecaptcha.getResponse();
+            if(response.length === 0) {
+                event.preventDefault();
+                alert('Please complete the reCAPTCHA');
+            }
+        });
+    </script>
 </body>
 </html>
