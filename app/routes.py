@@ -1,7 +1,7 @@
 import requests
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 
-import configuration
+import config
 from app import db
 from app.models import User, WorkoutPlan, Exercise, Badge
 from app.forms import LoginForm, RegistrationForm
@@ -9,7 +9,7 @@ from app.forms import LoginForm, RegistrationForm
 
 bp = Blueprint('routes', __name__)
 
-CONFIG = configuration.Config()
+CONFIG = config.Config()
 
 
 @bp.route('/', methods=['GET'])
@@ -34,6 +34,7 @@ def register():
             if form.validate_on_submit():
                 user = User(username=form.username.data, email=form.email.data)
                 user.set_password(form.password.data)
+
                 db.session.add(user)
                 db.session.commit()
                 flash('Registration successful!', 'success')
