@@ -33,7 +33,7 @@
 <body>
     <div class="register-form">
         <h2>Rejestracja</h2>
-        <form id="registerForm" method="POST" action="{{ url_for('routes.register') }}">
+        <form id="registerForm" method="POST" action="{{ url_for('auth.register') }}">
             <div class="form-group">
                 <label for="username">Nazwa użytkownika</label>
                 <input type="text" class="form-control" id="username" name="username" required>
