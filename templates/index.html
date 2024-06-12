@@ -1,83 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPG Gym App</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f7f7f7;
-            font-family: 'Arial', sans-serif;
-        }
-        .navbar {
-            margin-bottom: 30px;
-        }
-        .hero {
-            background-image: url('https://source.unsplash.com/1600x900/?gym,fitness');
-            background-size: cover;
-            background-position: center;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-        }
-        .hero h1 {
-            font-size: 4rem;
-        }
-        .content {
-            padding: 30px;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('routes.index') }}">RPG Gym App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('routes.index') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('routes.profile', username='demo_user') }}">Profile</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+{% extends "base.html" %}
 
-    <div class="hero">
-        <h1>Welcome to RPG Gym App</h1>
+{% block content %}
+<div class="hero">
+    <h1>Welcome to RPG Gym App</h1>
+</div>
+
+<div class="content">
+    <div class="container">
+        <h2>Transform Your Workout into an Adventure</h2>
+        <p>Welcome to RPG Gym App, where your fitness journey becomes an epic quest! Track your workouts, earn badges, and level up as you progress. Join us and make your workout more engaging and rewarding.</p>
+        <hr>
+        <h3>Features:</h3>
+        <ul>
+            <li>Track your workouts and progress</li>
+            <li>Earn badges for achieving milestones</li>
+            <li>Follow customized workout plans</li>
+            <li>Compete with friends and other users</li>
+            <li>View your profile and achievements</li>
+        </ul>
     </div>
-
-    <div class="content">
-        <div class="container">
-            <h2>Transform Your Workout into an Adventure</h2>
-            <p>Welcome to RPG Gym App, where your fitness journey becomes an epic quest! Track your workouts, earn badges, and level up as you progress. Join us and make your workout more engaging and rewarding.</p>
-            <hr>
-            <h3>Features:</h3>
-            <ul>
-                <li>Track your workouts and progress</li>
-                <li>Earn badges for achieving milestones</li>
-                <li>Follow customized workout plans</li>
-                <li>Compete with friends and other users</li>
-                <li>View your profile and achievements</li>
-            </ul>
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+</div>
+{% endblock %}

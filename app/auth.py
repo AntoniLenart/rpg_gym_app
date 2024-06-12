@@ -14,11 +14,8 @@ auth = Blueprint('auth', __name__)
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'GET':
-        return render_template('register.html')
-
+    form = RegistrationForm()
     if request.method == 'POST':
-        form = RegistrationForm()
         recaptcha_response = request.form.get('g-recaptcha-response')
         data = {
             'secret': CONFIG.RECAPTCHA_SECRET_KEY,
@@ -28,17 +25,15 @@ def register():
         result = r.json()
 
         if result['success']:
-            user = User(username=form.username.data, email=form.email.data, password=form.password.data,
-                        xp=0, level=1)
+            print('Form validated')
+            user = User(username=form.username.data, email=form.email.data, password=form.password.data, xp=0, level=1)
             db.session.add(user)
             db.session.commit()
             flash('Registration successful!', 'success')
             return redirect(url_for('auth.login'))
         else:
-            flash('Form validation failed. Please check your inputs.', 'danger')
-    else:
-        flash('Invalid reCAPTCHA. Please try again.', 'danger')
-        return redirect(url_for('auth.login'))
+            flash('Invalid reCAPTCHA. Please try again.', 'danger')
+    return render_template('register.html', form=form)
 
 
 @auth.route('/login', methods=['GET', 'POST'])
