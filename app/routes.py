@@ -1,6 +1,6 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import login_required
-from app.models import User, WorkoutPlan, Exercise, Badge
+from flask import Blueprint, render_template
+from flask_login import login_required, current_user
+from app.models import User, Rank
 
 import config
 
@@ -16,8 +16,8 @@ def index():
     return render_template('index.html')
 
 
-@bp.route('/profile/<username>', methods=['GET'])
+@bp.route('/profile', methods=['GET'])
 @login_required
-def profile(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    return render_template('profile.html', user=user)
+def profile():
+    current_user.get_stats().xp = 20
+    return render_template('profile.html', user=current_user)

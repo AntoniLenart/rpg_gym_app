@@ -1,7 +1,85 @@
 {% extends "base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}User profile{% endblock %}
+
+{% block style %}
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .profile {
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .profile-pic img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    .profile-info {
+        margin-top: 20px;
+    }
+
+    .profile-info p {
+        font-size: 18px;
+    }
+
+    .progress-bar {
+        width: 100%;
+        background-color: #f3f3f3;
+        overflow: hidden;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .progress {
+        height: 20px;
+        background-color: #89c48e;
+        text-align: center;
+        color: white;
+        line-height: 20px; 
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-<h1> ELO! </h1>
+<div class="profile">
+    <p> {{user.get_stats().xp }} / {{user.get_stats().next_level_xp }} XP </p>
+    <div class="progress-bar" id="progress-bar-container">
+        <div class="progress" id="progress-bar"></div>
+    </div>
+    <h1>{{ user.username }}'s Profile</h1>
+    <h3 style="color: rgb(209, 48, 7);">Level {{ user.get_stats().level }} - {{ user.get_stats().title }} </h3>
+    <div class="profile-info">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var experiencePoints = {{ user.get_stats().xp }};
+        var nextLevelExperience = {{ user.get_stats().next_level_xp}};
+        var progressBar = document.getElementById('progress-bar');
+        var progressPercentage = (experiencePoints / nextLevelExperience) * 100;
+        progressBar.style.width = progressPercentage + '%';
+
+        var progressBarContainer = document.getElementById('progress-bar-container');
+        progressBarContainer.addEventListener('mouseover', function() {
+            progressBar.style.backgroundColor = '#66bb6a'; 
+        });
+        progressBarContainer.addEventListener('mouseout', function() {
+            progressBar.style.backgroundColor = '#89c48e'; 
+        });
+
+    });
+</script>
 {% endblock %}

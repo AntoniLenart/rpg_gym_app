@@ -37,6 +37,10 @@
                 {% for msg in get_flashed_messages(category_filter=['wrong_login']) %}
                 <strong style="color:red; text-align: center; margin-bottom: 10px;"> {{ msg }} </strong>
                 {% endfor %}
+
+                {% for msg in get_flashed_messages(category_filter=['logout_success']) %}
+                <strong style="text-align: center; margin-bottom: 10px;"> {{ msg }} </strong>
+                {% endfor %}
             </div>
         </div>
     </div>

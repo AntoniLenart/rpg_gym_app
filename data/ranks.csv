@@ -1,0 +1,21 @@
+level,name,required_xp
+1,Novice Lifter,0
+2,Apprentice Trainer,50
+3,Rookie Warrior,150
+4,Fitness Seeker,300
+5,Adept Athlete,500
+6,Junior Knight,750
+7,Strength Explorer,1050
+8,Fitness Adventurer,1400
+9,Senior Squire,1800
+10,Gym Crusader,2250
+11,Power Aspirant,2750
+12,Iron Defender,3300
+13,Endurance Guardian,3900
+14,Fitness Paladin,4550
+15,Muscle Conqueror,5250
+16,Strength Champion,6000
+17,Elite Gladiator,6800
+18,Iron Sage,7650
+19,Fitness Master,8550
+20,Legendary Hero,9500
