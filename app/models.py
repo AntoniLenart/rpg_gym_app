@@ -19,6 +19,9 @@ class User(db.Model, UserMixin):
         self.xp = xp
         self.level = level
 
+    def __repr__(self):
+        return f'User {self.username}'
+
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password_hash, password)
 

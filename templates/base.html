@@ -51,7 +51,7 @@
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('routes.index') }}">Profile</a>
+                    <a class="nav-link" href="{{ url_for('routes.profile', username=current_user.username) }}">Profile</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
