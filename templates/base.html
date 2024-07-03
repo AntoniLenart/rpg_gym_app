@@ -57,6 +57,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('routes.profile') }}">Profile</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('routes.workouts') }}">Workouts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('routes.exercises') }}">Exercises</a>
+                </li>
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>

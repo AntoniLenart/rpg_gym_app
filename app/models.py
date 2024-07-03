@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), index=True, nullable=False, unique=True)
     password_hash = db.Column(db.String(128), nullable=False)
     stats = db.relationship('Statistics', backref='user')
+    workouts = db.relationship('Workout', backref='user')
 
     def __init__(self, username, email, password):
         self.username = username
@@ -43,3 +44,26 @@ class Rank(db.Model):
     level = db.Column(db.Integer, primary_key=True, nullable=False, unique=True, autoincrement=True)
     title = db.Column(db.String(64), nullable=False, unique=True)
     required_xp = db.Column(db.Integer, nullable=False)
+
+class Workout(db.Model):
+    __tablename__ = 'workouts'
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False, unique=True, autoincrement=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    exercises = db.relationship('UserExercise', backref='workout')
+
+
+class ExerciseData(db.Model):
+    __tablename__ = 'exercise_data'
+
+    name = db.Column(db.String(64), primary_key=True, nullable=False, unique=True)
+    muscle_part = db.Column(db.String(64), nullable=False)
+    xp_reward = db.Column(db.Integer, nullable=False)
+
+class UserExercise(ExerciseData):
+    __tablename__ = 'user_exercises'
+
+    sets = db.Column(db.Integer, nullable=False)
+    reps = db.Column(db.Integer)
+    workout_id = db.Column(db.Integer, db.ForeignKey('workouts.id'), nullable=False)
+

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Exercises{% endblock %}
+
+{% block content %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Exercise</th>
+            <th scope="col">Muscle Part</th>
+            <th scope="col">XP Reward</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ex in exercise_data %}
+        <tr>
+            <td>{{ ex.name }}</td>
+            <td>{{ ex.muscle_part }}</td>
+            <td>{{ ex.xp_reward }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

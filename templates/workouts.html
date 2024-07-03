@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Workouts{% endblock %}
+
+{% block style %}
+<style>
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container justify-content-center align-items-center text-center">
+    <button class="btn">
+        <a href="{{ url_for('routes.add_workout') }}">
+            <img class="center-block" src="/static/plus_button.png" width="50%" height="auto" alt="Add Workout">
+        </a>
+    </button>
+</div>
+{% endblock %}

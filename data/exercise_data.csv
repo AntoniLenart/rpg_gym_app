@@ -1,0 +1,29 @@
+name,muscle_part,xp_reward
+Bench Press,Chest,5
+Squats,Legs,5
+Deadlift,Back,5
+Pull-Ups,Back,4
+Push-Ups,Chest,2
+Shoulder Press,Shoulders,4
+Bicep Curls,Biceps,2
+Tricep Dips,Triceps,3
+Leg Press,Legs,4
+Lunges,Legs,3
+Plank,Core,1
+Crunches,Core,1
+Lat Pulldowns,Back,3
+Chest Flyes,Chest,3
+Seated Row,Back,3
+Calf Raises,Legs,2
+Leg Curls,Legs,3
+Leg Extensions,Legs,3
+Dumbbell Rows,Back,3
+Overhead Tricep Extension,Triceps,2
+Hammer Curls,Biceps,2
+Side Lateral Raises,Shoulders,3
+Front Raises,Shoulders,3
+Hip Thrusts,Glutes,4
+Mountain Climbers,Core,2
+Russian Twists,Core,2
+Bicycle Crunches,Core,2
+Burpees,Full Body,4

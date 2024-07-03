@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Add Workout{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Add exercise</h2>
+    <form id="exerciseForm" method="POST" action="{{ url_for('routes.add_workout')}}">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            <label for="exercise">Exercise:</label>
+            <div class="validation-error">
+                {{ form.exercise(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sets">Sets:</label>
+            <div class="validation-error">
+                {{ form.sets(class_="form-control")}}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="reps">Repetitions:</label>
+            <div class="validation-error">
+                {{ form.reps(class_="form-control")}}
+            </div>
+        </div>
+        <div class="form-row">
+            <button type="submit" value="add_exercise" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">Add exercise</button>
+            <button type="submit" value="save_workout" class="btn btn-danger" style="margin-left: 10px; margin-right: 10px;">Save workout</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
