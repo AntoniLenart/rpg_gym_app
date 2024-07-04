@@ -25,10 +25,31 @@
                 {{ form.reps(class_="form-control")}}
             </div>
         </div>
-        <div class="form-row">
-            <button type="submit" value="add_exercise" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">Add exercise</button>
-            <button type="submit" value="save_workout" class="btn btn-danger" style="margin-left: 10px; margin-right: 10px;">Save workout</button>
+        <div class="form-row" style="margin-bottom: 20px;">
+            <button type="submit" name="submit_button" value="add_exercise" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">Add exercise</button>
+            <button type="submit" name="submit_button" value="save_workout" class="btn btn-danger" style="margin-left: 10px; margin-right: 10px;">Save workout</button>
         </div>
     </form>
 </div>
+
+{% if added_exercises %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Exercise</th>
+            <th scope="col">Sets</th>
+            <th scope="col">Repetitions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ex in added_exercises %}
+            <tr>
+                <td>{{ ex.name }}</td>
+                <td>{{ ex.sets }}</td>
+                <td>{{ ex.reps }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}
